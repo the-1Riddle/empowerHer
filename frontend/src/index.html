@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>EmpowerHer</title>
+   <!-- <script>
+    function redirectToPage(){
+      var selectedValue= document.getElementById('services').value;
+      if (selectedValue !== ''){
+        window.location.href =selectedValue;
+      }
+    }
+  </script>-->
   </head>
+  
   <body>
   <header>
     <h1>EmpowerHer</h1>
@@ -17,11 +26,14 @@
       </nav>
       <label for="services">Check out our features</label>
 <select id="services">
-    <option value="service1">Gender-Based Violence</option>
-    <option value="service2">Sexual Awareness In Girl Child</option>
-    <option value="service3">Resources Support Page</option>
-    <option value="service3">Women's Wellness Hub</option>
+  <option value="" disabled selected hidden>Features</option>
+    <option value="gender-violence.html">Gender-Based Violence</option>
+    <option value="sexual-awareness.html">Sexual Awareness In Girl Child</option>
+    <option value="resources.html">Resources Support Page</option>
+    <option value="wellness.html">Women's Wellness Hub</option>
+   
 </select>
+<!--<button onclick="redirectToPage()">Go</button>-->
         <div class="d-flex justify-content-end"><button id="signup-button" class="btn btn-primary me-3 ">Sign Up</button>
         <button id="signin-button" class="btn btn-primary me-2">Sign In</button>
         </div>
@@ -40,7 +52,8 @@
     </header>
     
     <div id="app">
-      <button id="show-prompt">Tell Your Story</button>
+      <a id="link" href="message.html">Click here to share your story</a>
+      <!--<button id="show-prompt">Tell Your Story</button>-->
       <div id="message-container" style="display: none;" >
         <!--<label for="message">Send a Message:</label>-->
         <textarea id="message" placeholder="Tell your story"></textarea>
@@ -48,13 +61,20 @@
     </div>
 
     <!--Sections-->
-    <section id="home">
-      <h2>About Us</h2>
+    <section class="sections" id="home">
+      <h2>Welcome to EmpowerHer!</h2>
+      <p>Here at EmpowerHer, we amplify voices, foster healing, and ignite change. Explore our platform to:</p> <ul> <li><strong>Share Your Story:</strong> Victims and survivors,
+         your experiences matter. Share your journey—anonymous, yet powerful. Break the silence, inspire others, and find solace in 
+         community support.</li> <li><strong>Learn and Empower:</strong> Dive into articles, resources, and expert advice on gender-based violence (GBV). Discover 
+          wellness tips, mental health insights, and sexual awareness for girls.</li> <li><strong>Connect Safely:</strong> Our secure interaction platform ensures
+             privacy. Engage with empathy and respect. Join discussions, ask questions, and find solidarity.</li> </ul> 
   </section>
-  <section id="about">
-      
+  <section class="sections" id="about">
+    <h2>Our Mission</h2> <p>We believe in:</p> <ol> <li><strong>Visibility:</strong> Shining a light on GBV, empowering survivors, and educating 
+      all.</li> <li><strong>Compassion:</strong> Listening, validating, and fostering empathy.</li> <li><strong>Action:</strong> Advocating for
+       policy change, awareness, and prevention.</li> </ol>   
   </section>
-  <section id="contact">
+  <section class="sections" id="contact">
     <h2>Contact Us</h2>
   </section>
     </div>

@@ -8,6 +8,7 @@ const webpack = require("webpack");
 
 const isDevelopment = process.env.NODE_ENV !== "production";
 
+
 module.exports = {
   mode: isDevelopment ? "development" : "production",
   entry: "./src/index.js",
@@ -53,11 +54,34 @@ module.exports = {
         ],
       },
     ],
+    
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+      filename: "index.html",
+    }),
+   //new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "./src/gender-violence.html",
+      filename: "gender-violence.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/sexual-awareness.html",
+      filename: "sexual-awareness.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/resources.html",
+      filename: "resources.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/wellness.html",
+      filename: "wellness.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/message.html",
+      filename: "message.html",
     }),
     isDevelopment && new webpack.HotModuleReplacementPlugin(),
     !isDevelopment &&

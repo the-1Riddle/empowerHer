@@ -1,10 +1,15 @@
 import "./style/style.scss";
-
+document.getElementById('services').addEventListener('change', function() {
+    var selectedValue = this.value;
+    if (selectedValue !== '') {
+      window.location.href = selectedValue;
+    }
+  });
 
 /*const appDiv = document.getElementById("app");
 appDiv.innerHTML = `<h1>${message}</h1>`;*/
 
-const messageInput = document.getElementById('message');
+const messageInput = document.getElementsByClassName('message');
 const inputValue = messageInput.value;
 console.log(inputValue); // Display the value in the console
 
@@ -22,29 +27,33 @@ console.log(inputValue); // Display the value in the console
         signinForm.style.display = 'block';
         registrationForm.style.display = 'none';
     });
-/*handle form submission
-    const registrationForm = document.getElementById('registration-form');
-    const signinForm = document.getElementById('signin-form');
 
-    registrationForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent the default form submission
-        // Get form data and send it to your database
-        // Example: You can use fetch() or an AJAX request
-        // ...
-    });
-
-    signinForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent the default form submission
-        // Get form data and send it to your database
-        // Example: You can use fetch() or an AJAX request
-        // ...
-    });
-*/
 //handle prompt
-    const showPromptButton = document.getElementById('show-prompt');
-    const messagePrompt = document.getElementById('message-container');
+    const messages = []; //array to store messages
+    document.getElementById('submit-message').addEventListener('click', function () {
+        const messageInput = document.getElementById('message-input');
+        const messageText = messageInput.value.trim();
+      
+        if (messageText) {
+          messages.push(messageText);
+          // Clear the input fielssd
+          messageInput.value = '';
+        }
 
-    showPromptButton.addEventListener('click', () => {
-        messagePrompt.style.display = 'block'; // Show the prompt
-    });
+        const messageBoard = document.getElementById('message-board');
+        const newMessage = document.createElement('div');
+        newMessage.className = 'message';
+        newMessage.textContent = messageText; // Display the user's message
+        messageBoard.appendChild(newMessage);
+      });
+     
+  //dropdown
+document.getElementById('services').addEventListener('change', function() {
+    var selectedValue = this.value;
+    if (selectedValue !== '') {
+      window.location.href = selectedValue;
+    }
+  });
+//health checks
 
+   
