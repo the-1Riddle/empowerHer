@@ -1,10 +1,12 @@
 Webstack - Portfolio Project: empowerHer
 
 Introduction
+
 Welcome to empowerHer, a comprehensive web platform dedicated to addressing gender-based violence against women and promoting women's wellness. 
 This project is the result of collaborative efforts by a team of passionate developers committed to leveraging technology for social good
 
 Project Overview
+
 empowerHer provides a robust platform where women can connect, share experiences, and engage in discussions on crucial topics. The platform features a Women's Wellness Hub that offers health tips and reminders, encouraging users to adopt healthy lifestyles. Key thematic areas include:
 
 Gender-Based Violence Awareness: Educational resources and awareness campaigns aimed at combating gender-based violence.
@@ -16,6 +18,7 @@ Resources Awareness Page: A centralized repository of support services and legal
 Women's Wellness Hub: Subscription-based health and wellness tips to encourage users to maintain healthy lifestyles.
 
 Contributors
+
 This project was made possible by the contributions of:
 
 Mugisha Edson
@@ -25,10 +28,7 @@ Elizabeth Eunice Ndzukule
 
 Project Details
 
-ChatGPT
-Certainly! You can integrate the provided webpack configuration into your README.md under the "Project Details" section. This will give a complete overview of both frontend technologies and the webpack setup used in your project. Here's how you can structure it:
 
-Project Details
 Technologies Used
 Frontend:
 
