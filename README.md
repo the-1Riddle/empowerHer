@@ -24,8 +24,41 @@ Elvis Otieno
 Elizabeth Eunice Ndzukule
 
 Project Details
+
+ChatGPT
+Certainly! You can integrate the provided webpack configuration into your README.md under the "Project Details" section. This will give a complete overview of both frontend technologies and the webpack setup used in your project. Here's how you can structure it:
+
+Project Details
 Technologies Used
-Frontend: HTML, CSS, JavaScript
+Frontend:
+
+HTML5
+CSS3
+JavaScript (ES6+)
+Sass
+Bootstrap
+PostCSS
+Development Tools
+Build Tools:
+
+webpack
+Babel
+Sass Loader
+CSS Loader
+PostCSS Loader
+HTML Webpack Plugin
+Mini CSS Extract Plugin
+Clean Webpack Plugin
+Other Tools and Libraries:
+
+@babel/core
+@popperjs/core
+autoprefixer
+css-minimizer-webpack-plugin
+style-loader
+webpack-cli
+webpack-dev-server
+
 Backend:
 
 
