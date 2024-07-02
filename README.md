@@ -21,15 +21,19 @@ Contributors
 
 This project was made possible by the contributions of:
 
-Mugisha Edson
-Tarie Shoniwa
-Elvis Otieno
+Mugisha Edson,
+
+Tarie Shoniwa,
+
+Elvis Otieno and
+
 Elizabeth Eunice Ndzukule
 
 Project Details
 
 
 Technologies Used
+
 Frontend:
 
 HTML5
@@ -60,7 +64,7 @@ webpack-cli
 webpack-dev-server
 
 Backend:
-
+FastAPI framework
 
 Features
 Signup Page: Allows new users to register for an account securely.
