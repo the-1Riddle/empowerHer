@@ -1,5 +1,15 @@
 <template>
 	<h1>Hello world</h1>
 </template>
-<script></script>
+<script>
+	export default {
+		name: 'Home',
+		mounted() {
+		  let user=localStorage.getItem('user-info');
+		  if (!user) {
+		    this.$router.push({ name: 'signup' });
+		  }
+		},
+	}
+</script>
 <style></style>

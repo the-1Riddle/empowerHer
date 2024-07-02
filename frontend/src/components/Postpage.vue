@@ -10,7 +10,7 @@
         <p class="post-date">Posted Date</p>
       </div>
       <div class="post-options">
-        <button @click="togglePostOptions">...</button>
+        <a @click="togglePostOptions"><strong> . . . </strong></a>
         <div v-if="showPostOptions" class="options-menu">
           <button @click="deletePost">Delete</button>
         </div>
@@ -26,7 +26,7 @@
         <p class="comment-date">Posted Date</p>
         <p class="comment-content">{{ comment.comments_data }}</p>
         <div class="comment-options">
-          <button @click="toggleCommentOptions(comment.id)">...</button>
+          <a @click="toggleCommentOptions(comment.id)"><strong> . . . </strong></a>
           <div v-if="showCommentOptions[comment.id]" class="options-menu">
             <button @click="deleteComment(comment.id)">Delete Comment</button>
           </div>

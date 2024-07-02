@@ -1,4 +1,7 @@
 <template>
+  <li class="nav-item">
+    <a class="nav-link" href="#" @click="createPosts"><span class="material-symbols-outlined">edit_square</span></a>
+  </li>
   <div class="post-list">
     <div v-for="post in posts" :key="post.id" class="post-card">
       <img v-if="post.image" :src="post.image" alt="Post image" class="post-image"/>
@@ -52,6 +55,14 @@ export default {
         this.posts = response.data;
       } catch (error) {
         console.error('Error fetching posts:', error);
+      }
+    },
+    async createPosts() {
+      try {
+        const response = await api.createPost();
+        this.posts = response.data;
+      } catch (error) {
+        console.error('Error creating posts:', error);
       }
     },
     formatDate(date) {

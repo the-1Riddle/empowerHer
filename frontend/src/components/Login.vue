@@ -75,28 +75,5 @@ export default {
 </script>
 
 <style>
-.mb-4 {
-  margin-bottom: 1rem;
-}
-.block {
-  display: block;
-}
-.border {
-  border: 1px solid #ccc;
-}
-.p-2 {
-  padding: 0.5rem;
-}
-.w-full {
-  width: 100%;
-}
-.bg-blue-500 {
-  background-color: #3b82f6;
-}
-.text-white {
-  color: white;
-}
-.text-red-500 {
-  color: #f56565;
-}
+
 </style>
