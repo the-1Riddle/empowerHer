@@ -25,7 +25,7 @@ Mugisha Edson,
 
 Tarie Shoniwa,
 
-Elvis Otieno and
+Elvis Otieno, and
 
 Elizabeth Eunice Ndzukule
 
@@ -63,8 +63,15 @@ style-loader
 webpack-cli
 webpack-dev-server
 
-Backend:
-FastAPI framework
+Backend Technologies
+
+- **Python**: Programming language used for backend development.
+- **FastAPI**: Modern web framework for building APIs with Python.
+- **SQLAlchemy**: Python SQL toolkit and Object-Relational Mapping (ORM) library.
+- **SQLite**: Lightweight relational database management system used for local development.
+- **uvicorn**: ASGI server used to run the FastAPI application.
+- **pytest**: Framework for testing Python code, used for backend testing.
+- **Swagger UI**: Automatic interactive API documentation provided by FastAPI.
 
 Features
 Signup Page: Allows new users to register for an account securely.
