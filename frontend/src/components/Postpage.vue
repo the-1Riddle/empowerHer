@@ -1,46 +1,77 @@
 <template>
-  <div class="post-container" v-if="post">
-    <div class="post-header">
-      <div v-if="post.image">
-        <img :src="post.image" alt="Post Image" class="post-image"/>
-      </div>
-      <div v-else>
-        <h1 class="post-title">{{ post.post_title }}</h1>
-        <p class="post-author">{{ getUser(post.user_id).user_name }}</p>
-        <p class="post-date">Posted Date</p>
-      </div>
-      <div class="post-options">
-        <a @click="togglePostOptions"><strong> . . . </strong></a>
-        <div v-if="showPostOptions" class="options-menu">
-          <button @click="deletePost">Delete</button>
+  <div class="mt-150 mb-150">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="single-article-section" v-if="post">
+            <div class="single-article-text">
+              <div v-if="post.image">
+                <img :src="post.image" alt="Post Image" class="post-image"/>
+              </div>
+              <p class="blog-meta">
+                <span class="author"><i class="fas fa-user"></i> {{ getUser(post.user_id).user_name }}</span>
+                <span class="date"><i class="fas fa-calendar"></i> Posted Date</span>
+              </p>
+              <h2>{{ post.post_title }}</h2>
+              <p>{{ post.post_desc }}</p>
+            </div>
+
+            <div class="comments-list-wrap">
+              <h3 class="comment-count-title">{{ comments.length }} Comments</h3>
+              <div class="comment-list">
+                <div v-for="comment in comments" :key="comment.id" class="single-comment-body">
+                  <div class="comment-user-avater">
+                    <img :src="'/path/to/avatar/' + comment.user_id" alt="User Avatar">
+                  </div>
+                  <div class="comment-text-body">
+                    <h4>{{ getUser(comment.user_id).user_name }} <span class="comment-date">Posted Date</span></h4>
+                    <p>{{ comment.comments_data }}</p>
+                    <div class="comment-options">
+                      <a @click="toggleCommentOptions(comment.id)"><strong> . . . </strong></a>
+                      <div v-if="showCommentOptions[comment.id]" class="options-menu">
+                        <button @click="deleteComment(comment.id)">Delete Comment</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="comment-template">
+              <h4>Leave a comment</h4>
+              <p>If you have a comment don't hesitate to send us your opinion.</p>
+              <form @submit.prevent="addComment">
+                <p>
+                  <input v-model="newComment.user_name" type="text" placeholder="Your Name" required/>
+                  <input v-model="newComment.user_email" type="email" placeholder="Your Email" required/>
+                </p>
+                <p><textarea v-model="newComment.comments_data" cols="30" rows="10" placeholder="Your Message" required></textarea></p>
+                <p><input type="submit" value="Submit"></p>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="post-content">
-      <p>{{ post.post_desc }}</p>
-    </div>
-    <div class="comments-section">
-      <h2>Comments</h2>
-      <div v-for="comment in comments" :key="comment.id" class="comment">
-        <p class="comment-author">{{ getUser(comment.user_id).user_name }}</p>
-        <p class="comment-date">Posted Date</p>
-        <p class="comment-content">{{ comment.comments_data }}</p>
-        <div class="comment-options">
-          <a @click="toggleCommentOptions(comment.id)"><strong> . . . </strong></a>
-          <div v-if="showCommentOptions[comment.id]" class="options-menu">
-            <button @click="deleteComment(comment.id)">Delete Comment</button>
+        <div class="col-lg-4">
+          <div class="sidebar-section">
+            <div class="recent-posts">
+              <h4>Recent Posts</h4>
+              <ul>
+                <!-- Loop and display the first 5 recent posts -->
+                <li v-for="recentPost in recentPosts.slice(0, 5)" :key="recentPost.id"><a :href="`/post/${recentPost.id}`">{{ recentPost.post_title }}</a></li>
+              </ul>
+            </div>
+            <div class="tag-section">
+              <h4>Tags</h4>
+              <ul>
+                <!-- Add tags manually -->
+                <li><a href="/tag/gender-violence">Gender Violence</a></li>
+                <li><a href="/tag/sexual-awareness">Sexual Awareness</a></li>
+                <li><a href="/tag/wellness">Wellness</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="add-comment-section">
-      <h2>Leave a Comment</h2>
-      <form @submit.prevent="addComment">
-        <input v-model="newComment.user_name" type="text" placeholder="Your Name" required/>
-        <input v-model="newComment.user_email" type="email" placeholder="Your Email" required/>
-        <textarea v-model="newComment.comments_data" placeholder="Your Comment" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
     </div>
   </div>
 </template>
@@ -60,7 +91,8 @@ export default {
       },
       users: [],
       showPostOptions: false,
-      showCommentOptions: {}
+      showCommentOptions: {},
+      recentPosts: []
     };
   },
   async created() {
@@ -68,6 +100,7 @@ export default {
     await this.fetchPost(postId);
     await this.fetchComments(postId);
     await this.fetchUsers();
+    await this.fetchRecentPosts();
   },
   methods: {
     async fetchPost(postId) {
@@ -92,6 +125,14 @@ export default {
         this.users = response.data;
       } catch (error) {
         console.error('Error fetching users:', error);
+      }
+    },
+    async fetchRecentPosts() {
+      try {
+        const response = await api.getRecentPosts();
+        this.recentPosts = response.data;
+      } catch (error) {
+        console.error('Error fetching recent posts:', error);
       }
     },
     getUser(userId) {
@@ -135,7 +176,6 @@ export default {
     }
   }
 };
-
 </script>
 
 <style scoped>

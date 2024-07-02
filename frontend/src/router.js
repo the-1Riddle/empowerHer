@@ -10,6 +10,8 @@ import GenderViolence from './components/GenderViolence.vue';
 import Postpage from './components/Postpage.vue';
 import PrivacyPolicy from './components/PrivacyPolicy.vue';
 import Account from './components/Account.vue';
+import About from './components/About.vue';
+import Contact from './components/Contact.vue';
 
 const routes = [
   { path: '/signup', name: 'signup', component: Signup },
@@ -22,6 +24,8 @@ const routes = [
   { path: '/privacy-policy', name: 'privacy-policy', component: PrivacyPolicy },
   { path: '/wellness', name: 'wellness', component: Wellness },
   { path: '/account', name: 'account', component: Account },
+  { path : '/about', name: 'about', component: About },
+  { path : '/contact', name: 'contact', component: Contact },
 ];
 
 const router = createRouter({

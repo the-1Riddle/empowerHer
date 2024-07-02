@@ -1,5 +1,5 @@
 <template>
-<form @submit.prevent="submit">
+<form @submit.prevent="submit"  id="sign-up">
   <h1 class="font-semibold text-4xl mb-4">Sign up</h1>
   <p class="text-base mb-4 leading-5">
       Have an account?
@@ -57,7 +57,7 @@
     <label for="repeatPassword">Confirm Password</label>
     <input v-model="formData.repeatPassword" type="password" class="form-control" id="repeatPassword" placeholder="Password" required>
   </div>
-  <button type="submit" class="w-full btn btn-primary">Sign Up</button>
+  <button type="submit" id="signup-btn" class="w-full btn btn-primary">Sign Up</button>
 </form>
 </template>
 
