@@ -1,20 +1,71 @@
 <template>
 
-	<main>
-	<div class="intro">
-      <h3>Welcome to Our Safe Haven: Share Your Story</h3>
-		<b>A Place to Be Heard, Understood, and Supported</b>
-		<p><b>Dear Friends,</b>
+	<body>
+		<br><br>
+		<div class="mt-150">
+		    <div class="container">
+		        <h3 style="text-align:center">Privacy <span class="orange-text">Policy</span></h3>
+	<hr>
 
-		We understand that some stories are too heavy to carry alone. That’s why we’ve created this platform—a sanctuary where you can unburden your heart, share your experiences, and connect with others who’ve walked similar paths.<br>
-		<b>What We Offer:</b>
-		<li>Anonymity: Your privacy matters. We’re committed to safeguarding your identity.</li>
-		<li>Empathy and Validation: Here, you’re not alone. Others will listen, empathize, and validate your feelings. Your pain matters, and so does your healing.</li>
-		<li>Community Support: Receive comments, encouragement, and advice from a compassionate community. Together, we can lift each other up.</li><br>
-		<b>Why It Matters:</b><br>
-		We recognize that many women face barriers—fear, shame, or societal pressure—that prevent them from speaking out. But your voice deserves to be heard. By sharing, you empower others and break the silence.
-		Join Us: Let’s create a space where stories heal, hearts mend, and resilience blooms.</p>
-	</div>
-	</main>
+	<h3>Introduction</h3>
+
+	<p>EmpowerHer is committed to protecting the privacy and security of our users. This privacy policy explains how we collect, use, and disclose personal information from our website visitors and users.</p>
+
+	<h3>Information We Collect</h3>
+
+	<ul>
+	  <li>User account information (username, email address, password)</li>
+	  <li>User-generated content (stories, comments, messages)</li>
+	  <li>Website usage data (browser type, IP address, device type)</li>
+	</ul>
+
+	<h3>How We Use Your Information</h3>
+
+	<ul>
+	  <li>Provide and improve our services</li>
+	  <li>Respond to user inquiries and support requests</li>
+	  <li>Send newsletters and updates (if opted-in)</li>
+	  <li>Analyze website usage patterns</li>
+	</ul>
+
+	<h3>Data Protection and Security</h3>
+
+	<ul>
+	  <li>We implement appropriate security measures to protect user data</li>
+	  <li>Our website uses HTTPS encryption</li>
+	  <li>We comply with applicable data protection regulations</li>
+	</ul>
+
+	<h3>Data Sharing and Disclosure</h3>
+
+	<ul>
+	  <li>We do not share personal information with third parties unless:</li>
+	  <ul>
+	    <li>Required by law or legal process</li>
+	    <li>To protect the rights or safety of our users or others</li>
+	    <li>With user consent</li>
+	  </ul>
+	</ul>
+
+	<h3>User Rights</h3>
+
+	<ul>
+	  <li>Access and correct personal information</li>
+	  <li>Request data deletion</li>
+	  <li>Object to data processing</li>
+	</ul>
+
+	<h3>Changes to This Privacy Policy</h3>
+
+	<p>We will notify users of significant changes by email or website notice.</p>
+
+	<h3>Contact Us</h3>
+
+	<p>If you have questions or concerns, please contact us at: 
+	  <a href="mailto:support@empowerher.com">support@empowerher.com</a>
+	</p>
+			</div>
+		</div>
+	</body>
 
 </template>

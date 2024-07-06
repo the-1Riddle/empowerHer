@@ -3,9 +3,23 @@ import axios from 'axios';
 const apiClient = axios.create({
   baseURL: 'http://localhost:8000',
   headers: {
+    Accept: 'application/json',
     'Content-Type': 'application/json'
   }
 });
+
+apiClient.interceptors.request.use(
+  config => {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  error => {
+    return Promise.reject(error);
+  }
+);
 
 export default {
   getPosts() {
@@ -14,8 +28,8 @@ export default {
   getPostById(postId) {
     return apiClient.get(`/posts/${postId}`);
   },
-  createPost(postData) {
-    return apiClient.post('/posts/', postData);
+  createPost(postData, config) {
+    return apiClient.post('/posts/', postData, config);
   },
   deletePost(postId) {
     return apiClient.delete(`/posts/${postId}`);
@@ -23,12 +37,14 @@ export default {
   getUsers() {
     return apiClient.get('/users/');
   },
+  getUserByEmail(email) {
+    return apiClient.get(`/users/email/${email}`);
+  },
   async createUser(userData) {
     try {
       const response = await apiClient.post('/users/', userData);
       return response;
     } catch (error) {
-      // Log error response for debugging
       console.error('API Error:', error.response);
       throw error;
     }
@@ -40,13 +56,37 @@ export default {
     return apiClient.get(`/comments?post_id=${postId}`);
   },
   createComment(commentData) {
-    return apiClient.post('/comments/', commentData);
+    const { user_email, ...data } = commentData;
+    return apiClient.post(`/comments/?user_email=${encodeURIComponent(user_email)}`, data);
   },
   deleteComment(commentId) {
     return apiClient.delete(`/comments/${commentId}`);
   },
   loginUser(loginData) {
-    return apiClient.post('/login/', loginData);
+    const params = new URLSearchParams();
+    params.append('username', loginData.username);
+    params.append('password', loginData.password);
+    return apiClient.post('/token', params, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(response => {
+      // Store the access token in localStorage
+      localStorage.setItem('access_token', response.data.access_token);
+      return response;
+    })
+    .catch(error => {
+      console.error("Login API call failed", error);
+      throw error;
+    });
+  },
+  getUserDetails() {
+    return apiClient.get('/users/me/')
+    .catch(error => {
+      console.error("Get user details API call failed", error);
+      throw error;
+    });
   },
   signupUser(signupData) {
     return apiClient.post('/users/', signupData);

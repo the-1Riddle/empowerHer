@@ -7,6 +7,16 @@
   </p>
   <div class="form-row">
     <div class="form-group col-md-6">
+      <label for="firstName">First Name</label>
+      <input v-model="formData.first_name" type="text" class="form-control" id="firstName" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="lastName">Last Name</label>
+      <input v-model="formData.last_name" type="text" class="form-control" id="lastName" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
       <label for="userName">Username</label>
       <div class="input-group">
         <div class="input-group-prepend">
@@ -15,16 +25,6 @@
         <input v-model="formData.user_name" type="text" class="form-control" id="userName" placeholder="Username" required>
       </div>
     </div>
-    <div class="form-group col-md-6">
-      <label for="firstName">First Name</label>
-      <input v-model="formData.first_name" type="text" class="form-control" id="firstName" required>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="lastName">Last Name</label>
-      <input v-model="formData.last_name" type="text" class="form-control" id="lastName" required>
-    </div>
     <div class="form-group col-md-4">
       <label for="age">Your Age</label>
       <input v-model="formData.age" type="number" class="form-control" id="age" required>
@@ -32,7 +32,7 @@
     <div class="form-group col-md-2">
       <label for="gender">Gender</label>
       <select v-model="formData.gender" id="gender" class="form-control" required>
-        <option value="" disabled>Select Gender</option>
+        <option value="" disabled>Gender</option>
         <option value="male">Male</option>
         <option value="female">Female</option>
         <option value="other">Other</option>
@@ -115,9 +115,8 @@ export default {
 
         if (response.status === 200 && response.data) {
           alert('You\'ve successfully signed up');
-          localStorage.setItem('user-info', JSON.stringify(response.data));
 
-          router.push({ name: 'home' });
+          router.push({ name: 'login' });
         } else {
           throw new Error('Signup failed');
         }
@@ -131,12 +130,6 @@ export default {
       formData,
       submit,
     };
-  },
-  mounted() {
-    let user=localStorage.getItem('user-info');
-    if (user) {
-      this.$router.push({ name: 'home' });
-    }
   },
 };
 </script>

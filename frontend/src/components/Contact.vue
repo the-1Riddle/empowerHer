@@ -23,20 +23,33 @@
 						<h2>Have you any question?</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, ratione! Laboriosam est, assumenda. Perferendis, quo alias quaerat aliquid. Corporis ipsum minus voluptate? Dolore, esse natus!</p>
 					</div>
-				 	<div id="form_status"></div>
+					<div id="form_status"></div>
 					<div class="contact-form">
-						<form type="POST" id="fruitkha-contact" onSubmit="return valid_datas( this );">
-							<p>
-								<input type="text" placeholder="Name" name="name" id="name">
-								<input type="email" placeholder="Email" name="email" id="email">
-							</p>
-							<p>
-								<input type="tel" placeholder="Phone" name="phone" id="phone">
-								<input type="text" placeholder="Subject" name="subject" id="subject">
-							</p>
-							<p><textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea></p>
-							<p><input type="submit" value="Submit"></p>
-						</form>
+					<form class="row g-3">
+						<div class="col-md-6">
+							<label for="inputEmail4" class="form-label">Email</label>
+							<input type="email" class="form-control" id="inputEmail4" required>
+						</div>
+						<div class="col-md-6">
+							<label for="name" class="form-label">Full Name</label>
+							<input type="text" class="form-control" required>
+						</div>
+						<div class="col-md-6">
+							<label for="text" class="form-label">Subject</label>
+							<input type="text" class="form-control" id="subject" required>
+						</div>
+						<div class="col-md-6">
+							<label for="tel" class="form-label">Phone Number</label>
+							<input type="tel" class="form-control" id="tel" required>
+						</div>
+						<div class="form-floating">
+						  <textarea class="form-control" placeholder="Leave a comment here" rows="10" id="floatingTextarea2" style="height: 200px">
+						  </textarea>
+						</div>
+						<div class="col-12">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
 					</div>
 				</div>
 				<div class="col-lg-4">

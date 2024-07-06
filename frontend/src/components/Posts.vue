@@ -1,27 +1,32 @@
 <template>
-  <li class="nav-item">
-    <a class="nav-link" href="#" @click="createPosts"><span class="material-symbols-outlined">edit_square</span></a>
-  </li>
   <div class="post-list">
-    <div v-for="post in posts" :key="post.id" class="post-card">
-      <img v-if="post.image" :src="post.image" alt="Post image" class="post-image"/>
-      <div v-else class="post-placeholder">{{ getPlaceholderText(post.post_desc, 50) }}</div>
+    <div v-for="post in paginatedPosts" :key="post.id" class="post-card">
+      <img v-if="post.image" :src="getImageUrl(post.image)" alt="Post image" class="post-image"/>
+      <div v-else class="post-placeholder">{{ getPlaceholderText(post.post_desc, 10) }}</div>
       <div class="post-content">
         <h3>{{ post.post_title }}</h3>
         <div class="post-meta">
-          <span class="author"><i class="fa fa-user"></i> Author </span>
+          <span class="author"><i class="fa fa-user"></i> Author - </span>
           <span class="date"><i class="fa fa-calendar"></i> {{ formatDate(post.date) }}</span>
         </div>
         <p>{{ post.post_desc }}</p>
         <router-link :to="{ name: 'postpage', params: { id: post.id } }" class="read-more">read more</router-link>
       </div>
     </div>
-    <div class="pagination">
-      <button @click="prevPage" :disabled="currentPage === 1">Prev</button>
-      <span>{{ currentPage }}</span>
-      <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
-    </div>
   </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" :class="{ disabled: currentPage === 1 }" @click="prevPage">
+        <a class="page-link">Previous</a>
+      </li>
+      <li v-for="page in totalPages" :key="page" class="page-item" :class="{ active: page === currentPage }" @click="goToPage(page)">
+        <a class="page-link">{{ page }}</a>
+      </li>
+      <li class="page-item" :class="{ disabled: currentPage === totalPages }" @click="nextPage">
+        <a class="page-link">Next</a>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
@@ -32,7 +37,7 @@ export default {
     return {
       posts: [],
       currentPage: 1,
-      postsPerPage: 6,
+      postsPerPage: 12,
     };
   },
   computed: {
@@ -55,15 +60,11 @@ export default {
         this.posts = response.data;
       } catch (error) {
         console.error('Error fetching posts:', error);
+        alert('Error fetching posts. Please try again later.');
       }
     },
-    async createPosts() {
-      try {
-        const response = await api.createPost();
-        this.posts = response.data;
-      } catch (error) {
-        console.error('Error creating posts:', error);
-      }
+    getImageUrl(imagePath) {
+      return `http://localhost:8000/static/Pictures/${imagePath}`;
     },
     formatDate(date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -71,14 +72,10 @@ export default {
     },
     getPostDescription(post) {
       if (post.image) {
-        return this.getFirstWords(post.description, 15);
+        return this.getPlaceholderText(post.description, 15);
       } else {
-        return this.getFirstWords(post.description, 50);
+        return this.getPlaceholderText(post.description, 50);
       }
-    },
-    getFirstWords(text, numWords) {
-      const words = text.split(' ');
-      return words.slice(0, numWords).join(' ');
     },
     getPlaceholderText(text, numWords) {
       const words = text.split(' ');
@@ -93,6 +90,9 @@ export default {
       if (this.currentPage > 1) {
         this.currentPage--;
       }
+    },
+    goToPage(page) {
+      this.currentPage = page;
     },
   },
 };
@@ -164,16 +164,10 @@ export default {
   align-items: center;
   margin-top: 20px;
 }
-.pagination button {
-  background: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 5px;
+.pagination li {
   cursor: pointer;
 }
-.pagination button:disabled {
-  background: #ccc;
+.pagination li:disabled {
   cursor: not-allowed;
 }
 .pagination span {
