@@ -1,37 +1,3 @@
-<script>
-import CreatePost from './components/CreatePost.vue';
-
-export default {
-  name: 'Home',
-  components: {
-    CreatePost,
-  },
-  data() {
-    return {
-      user: null,
-    };
-  },
-  mounted() {
-    let userInfo = localStorage.getItem('user-info');
-    if (userInfo) {
-      this.user = userInfo;
-    } else {
-      this.$router.push({ name: 'login' });
-    }
-  },
-  methods: {
-    logout() {
-      localStorage.removeItem('user-info');
-      this.user = null;
-      this.$router.push({ name: 'home' });
-    },
-    openPopup() {
-      this.$refs.popupForm.open();
-    },
-  },
-};
-</script>
-
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <a class="navbar-brand display-1" href="/"><h1>EmpowerHer</h1></a>
@@ -89,6 +55,52 @@ export default {
   <router-view />
 </template>
 
+
+<script>
+import api from './api';
+import CreatePost from './components/CreatePost.vue';
+
+export default {
+  name: 'Home',
+  components: {
+    CreatePost,
+  },
+  data() {
+    return {
+      user: null,
+    };
+  },
+  mounted() {
+    this.checkTokenAndFetchUser();
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem('user-info');
+      this.user = null;
+      this.$router.push({ name: 'login' });
+    },
+    openPopup() {
+      this.$refs.popupForm.open();
+    },
+    async checkTokenAndFetchUser() {
+      let userInfo = localStorage.getItem('user-info');
+      if (userInfo) {
+        try {
+          await api.getUserDetails();
+          this.user = userInfo;
+        } catch (error) {
+          if (error.response && error.response.status === 401) {
+            // logout the user if unauthorised
+            this.logout();
+          }
+        }
+      } else {
+        this.$router.push({ name: 'login' });
+      }
+    }
+  }
+};
+</script>
 
 <style lang="scss">
 

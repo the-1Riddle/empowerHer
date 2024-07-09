@@ -90,5 +90,8 @@ export default {
   },
   signupUser(signupData) {
     return apiClient.post('/users/', signupData);
+  },
+  updatePassword(userEmail, passwordData) {
+    return apiClient.post(`/password-update`, { email: userEmail, ...passwordData });
   }
 };

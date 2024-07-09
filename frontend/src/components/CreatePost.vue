@@ -9,7 +9,7 @@
         </div>
         <div class="mb-3">
           <label for="title" class="form-label">Post Title</label>
-          <input type="text" v-model="title" class="form-control" id="title" placeholder="This a Post Title" required>
+          <input type="text" v-model="title" class="form-control" id="title" placeholder="This is a Post Title" required>
         </div>
         <div class="mb-3">
           <label for="message" class="form-label">Post Body</label>
@@ -26,17 +26,43 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
 import api from '../api.js';
 
 export default {
+  setup() {
+    const currentUser = ref('');
+
+    const fetchUserDetails = async () => {
+      try {
+        const response = await api.getUserDetails();
+        currentUser.value = response.data.user_email;
+      } catch (error) {
+        console.error("Failed to fetch user details:", error);
+      }
+    };
+
+    onMounted(() => {
+      fetchUserDetails();
+    });
+
+    return {
+      currentUser
+    };
+  },
   data() {
     return {
       show: false,
-      email: '',
+      email: '', // will be set after fetching user details
       title: '',
       message: '',
       image: null,
     };
+  },
+  watch: {
+    currentUser(newEmail) {
+      this.email = newEmail;
+    }
   },
   methods: {
     open() {

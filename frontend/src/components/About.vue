@@ -61,37 +61,27 @@
 	        </div>
 	    </div>
 
-	    <div class="mt-150">
-	        <div class="container">
-	            <h3 style="text-align:center">More <span class="orange-text">About Us</span></h3>
-	            <p>
-	        We understand that some stories are too heavy to carry alone. 
-	        That’s why we’ve created this platform—a sanctuary where you can unburden your heart, 
-	        share your experiences, and connect with others who’ve walked similar paths:<br>
+	        <div class="mt-150">
+	            <div class="container">
+	                <h3 style="text-align:center">More <span class="orange-text">About Us</span></h3>
+	                <p>
+	            We understand that some stories are too heavy to carry alone. 
+	            That’s why we’ve created this platform—a sanctuary where you can unburden your heart, 
+	            share your experiences, and connect with others who’ve walked similar paths:<br>
 
-	        1. We recognize that many women face barriers—fear, shame, or societal pressure—that prevent them from speaking out. But your voice deserves to be heard. By sharing, you empower others and break the silence.
-		Join Us: Let’s create a space where stories heal, hearts mend, and resilience blooms.<br>
+	            1. We recognize that many women face barriers—fear, shame, or societal pressure—that prevent them from speaking out. But your voice deserves to be heard. By sharing, you empower others and break the silence.
+	    	Join Us: Let’s create a space where stories heal, hearts mend, and resilience blooms.<br>
 
-	        2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
-
-	        3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>
-	      </p>
-	      <br><br>
-	        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse
-	        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	            2. Our platform is dedicated to providing a safe and supportive environment for women to share their stories,
+	                  receive support, and connect with others who understand their struggles. We believe that 
+	                  every woman deserves to be heard and empowered.<br>
+	            3. Through our platform, we aim to create a community that fosters empathy, understanding, and growth. We believe that by sharing our stories and supporting one another, we can break 
+	                  down barriers and create a brighter future for all women.      
+	          </p>
+	          <br><br>
+	         
+	            </div>
 	        </div>
-	    </div>
 	    <br><br>
 </template>
 

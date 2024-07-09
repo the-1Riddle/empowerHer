@@ -14,24 +14,23 @@
 	    </section>
 	    <section class="py-4">
 
-	      <div class="container">
-	        <div class="row">
-	          <div class="col-12">
-	            <div class="card mb-3 bg-soft-danger rounded-3">
-	              <div class="row g-0 align-items-center">
-	                <div class="col-md-5 col-lg-6 text-md-center"><img class="img-fluid" src="../assets/img/illustrations/about.png" alt="" /></div>
-	                <div class="col-md-7 col-lg-6 px-md-2 px-xl-6 text-center text-md-start">
-	                  <div class="card-body px-4 py-5 p-lg-3 p-md-4">
-	                    <h1 class="mb-4 fw-bold">Lorem ipsum<br class="d-md-none d-xxl-block" />adipisicing elit bla</h1>
-	                    <p class="card-text">sed do eiusmod tempor incididunt ut labore et dolore magna aliqua<br class="d-none d-xxl-block" />consequat. Duis aute irure dolor in reprehenderit. <br class="d-none d-xxl-block" />Tcillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non.<br class="d-none d-xxl-block" />proident, sunt in culpa qui officia deserunt mollit anim id est<br class="d-none d-xxl-block" />Duis aute irure dolor in reprehenderit in voluptate <br class="d-none d-xxl-block" />End of lorem. </p>
-	                  </div>
-	                </div>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-	      <!-- end of .container-->
+		  <div class="container">
+			<div class="row">
+			  <div class="col-12">
+				<div class="card mb-3 bg-soft-danger rounded-3">
+				  <div class="row g-0 align-items-center">
+					<div class="col-md-5 col-lg-6 text-md-center"><img class="img-fluid" src="../assets/img/illustrations/about.png" alt="" /></div>
+					<div class="col-md-7 col-lg-6 px-md-2 px-xl-6 text-center text-md-start">
+					  <div class="card-body px-4 py-5 p-lg-3 p-md-4">
+						<h1 class="mb-4 fw-bold">Why EmpowerHer!</h1>
+						<p class="card-text">EmpowerHer is a platform dedicated to empowering women and providing a safe space for them to connect, share stories, and support each other. Our mission is to foster solidarity and empowerment among women, breaking the silence and stigma surrounding gender-based violence. Through our health track platform, resource hub, and story sharing features, we aim to promote holistic well-being and provide valuable resources for women's physical and mental health. Join us today and be a part of the EmpowerHer community!</p>
+					  </div>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
 
 	    </section>
 

@@ -2,14 +2,13 @@
   <div class="post-list">
     <div v-for="post in paginatedPosts" :key="post.id" class="post-card">
       <img v-if="post.image" :src="getImageUrl(post.image)" alt="Post image" class="post-image"/>
-      <div v-else class="post-placeholder">{{ getPlaceholderText(post.post_desc, 10) }}</div>
       <div class="post-content">
         <h3>{{ post.post_title }}</h3>
         <div class="post-meta">
-          <span class="author"><i class="fa fa-user"></i> Author - </span>
-          <span class="date"><i class="fa fa-calendar"></i> {{ formatDate(post.date) }}</span>
+          <span class="author"><span class="material-symbols-outlined" style="position:relative; top:4px;">person</span> Author - </span>
+          <span class="date"><span class="material-symbols-outlined" style="position:relative; top:4px;">calendar_month</span> {{ formatDate(post.created_at) }}</span>
         </div>
-        <p>{{ post.post_desc }}</p>
+        <p>{{ getPostDescription(post) }}</p>
         <router-link :to="{ name: 'postpage', params: { id: post.id } }" class="read-more">read more</router-link>
       </div>
     </div>
@@ -72,14 +71,14 @@ export default {
     },
     getPostDescription(post) {
       if (post.image) {
-        return this.getPlaceholderText(post.description, 15);
+        return this.getPlaceholderText(post.post_desc, 15);
       } else {
-        return this.getPlaceholderText(post.description, 50);
+        return this.getPlaceholderText(post.post_desc, 45);
       }
     },
     getPlaceholderText(text, numWords) {
       const words = text.split(' ');
-      return words.slice(0, numWords).join(' ');
+      return words.length > numWords ? words.slice(0, numWords).join(' ') + '...' : text;
     },
     nextPage() {
       if (this.currentPage < this.totalPages) {

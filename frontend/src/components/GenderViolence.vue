@@ -1,9 +1,9 @@
 <template>
-	<main>
+    <main>
         <section id="types">
             <h2>Types of Gender-Based Violence</h2>
             <p>
-                Gender-based violence includes physical, emotional, sexual, and economic abuse. Here are some examples:
+                Gender-based violence encompasses various forms of abuse, including physical, emotional, sexual, and economic abuse. Here are some examples:
             </p>
             <ul>
                 <li>Physical violence: Inflicting harm through physical force.</li>
@@ -16,7 +16,7 @@
         <section id="support">
             <h2>Support Organizations</h2>
             <p>
-                Connect with organizations that assist survivors:
+                Connect with organizations that provide assistance to survivors:
             </p>
             <ul>
                 <li><a href="https://example.org">Organization A</a></li>

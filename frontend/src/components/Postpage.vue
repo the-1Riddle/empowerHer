@@ -10,10 +10,11 @@
                 <img :src="getImageUrl(post.image)" alt="Post Image" class="post-image"/>
               </div>
               <p class="blog-meta">
-                <span class="author"><i class="fas fa-user"></i>Author - {{ fetchUserByEmail(post.user_email).user_name }}</span>
-                <span class="date"><i class="fas fa-calendar"></i> Posted Date</span>
+                <br>
+                <span class="author"><span class="material-symbols-outlined" style="position:relative; top:4px;">person</span> Author - {{ fetchUserByEmail(post.user_email).user_name }} &emsp;</span>
+                <span class="date"><span class="material-symbols-outlined" style="position:relative; top:4px;">calendar_month</span> {{ formatDate(post.created_at) }} </span>
               </p>
-              <div class="post-options">
+              <div class="post-options" v-if="post.user_email === currentUser">
                 <a @click="togglePostOptions"><strong> . . . </strong></a>
                 <div v-if="showPostOptions" class="options-menu">
                   <button @click="deletePost">Delete</button>
@@ -31,7 +32,7 @@
                     <img src="../assets/img/user-image.svg" alt="User Avatar" style="width: 50px;">
                   </div>
                   <div class="comment-text-body">
-                    <h4>{{ fetchUserByEmail(comment.user_email).user_name }} <span class="comment-date">Posted Date</span></h4>
+                    <h4>{{ fetchUserByEmail(comment.user_email).user_name }} &emsp;<span class="comment-date">{{ formatDate(post.created_at) }}</span></h4>
                     <p>{{ comment.comments_data }}</p>
                   </div>
                 </div>
@@ -42,9 +43,6 @@
               <h4>Leave a comment</h4>
               <p>If you have a comment don't hesitate to send us your opinion.</p>
               <form @submit.prevent="handleSubmit">
-                <p>
-                  <input v-model="newComment.user_email" type="email" placeholder="Your Email" required/>
-                </p>
                 <p><textarea v-model="newComment.comments_data" class="form-control" id="floatingTextarea2" rows="10" placeholder="Your Message" required></textarea></p>
                 <p><input type="submit" value="Submit"></p>
               </form>
@@ -83,11 +81,13 @@ import api from '../api';
 export default {
   setup() {
     const userName = ref('');
+    const currentUser = ref('');
 
     const fetchUserDetails = async () => {
       try {
         const response = await api.getUserDetails();
         userName.value = response.data.user_name;
+        currentUser.value = response.data.user_email;
       } catch (error) {
         console.error("Failed to fetch user details:", error);
       }
@@ -98,7 +98,8 @@ export default {
     });
 
     return {
-      userName
+      userName,
+      currentUser
     };
   },
   data() {
@@ -121,6 +122,11 @@ export default {
     await this.fetchComments(postId);
     await this.fetchUsers();
     await this.fetchRecentPosts();
+  },
+  watch: {
+    currentUser(newEmail) {
+      this.newComment.user_email = newEmail;
+    }
   },
   methods: {
     async fetchPost(postId) {
@@ -155,8 +161,8 @@ export default {
         console.error('Error fetching recent posts:', error);
       }
     },
-    getUser(userId) {
-      return this.users.find(user => user.id === userId) || {};
+    fetchUserByEmail(userEmail) {
+      return this.users.find(user => user.user_email === userEmail) || {};
     },
     getImageUrl(imagePath) {
       return `http://localhost:8000/static/Pictures/${imagePath}`;
@@ -164,9 +170,6 @@ export default {
     handleSubmit() {
       console.log('Form submitted with:', this.newComment);
       this.addComment();
-    },
-    fetchUserByEmail(userEmail) {
-      return this.users.find(user => user.user_email === userEmail) || {};
     },
     async addComment() {
       try {
@@ -179,10 +182,14 @@ export default {
         const response = await api.createComment(commentData);
         console.log('Comment creation response:', response);
         await this.fetchComments(postId);
-        this.newComment = { user_email: '', comments_data: '' };
+        this.newComment = { user_email: this.currentUser, comments_data: '' };
       } catch (error) {
         console.error('Error adding comment:', error);
       }
+    },
+    formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(date).toLocaleDateString(undefined, options);
     },
     togglePostOptions() {
       this.showPostOptions = !this.showPostOptions;
@@ -232,6 +239,10 @@ export default {
 
 .post-title, .post-author, .post-date {
   margin: 10px 0;
+}
+
+.comment-date {
+  color: gray;
 }
 
 .post-content {
