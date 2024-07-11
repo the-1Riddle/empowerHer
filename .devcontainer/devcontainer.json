@@ -1,0 +1,11 @@
+{
+    // just recently learned to do this on github edication, curious to implement it on my own
+    "name": "Codespace for Skills!",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "GitHub.copilot"
+            ]
+        }
+    }
+}

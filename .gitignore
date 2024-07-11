@@ -2,4 +2,6 @@ node_modules/
 .gitignore
 __pycache__/
 backend/__pycache__/
+myenv/
+get-pip.py
 .devcontainer/
