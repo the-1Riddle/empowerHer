@@ -1,4 +1,5 @@
 <template>
+    <br><br>
     <main class="girls">
         <section id="introduction">
             <h2>Welcome to Sexual Awareness for Girls!</h2>
@@ -68,6 +69,7 @@
 .girls {
     font-family: Arial, sans-serif;
     color: #333;
+    padding-left: 20px;
 }
 
 .intro {
@@ -87,11 +89,6 @@ ul {
 
 li {
     margin-bottom: 5px;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
 }
 
 a:hover {

@@ -29,6 +29,7 @@
 body {
   @include background-settings("Bg.jpg", cover, no-repeat, center, fixed);
   font-family: 'Open Sans', sans-serif;
+  height: 100%;
 }
 
 .navbar {

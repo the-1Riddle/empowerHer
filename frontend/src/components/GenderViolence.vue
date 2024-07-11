@@ -1,4 +1,5 @@
 <template>
+    <br><br>
     <main>
         <section id="types">
             <h2>Types of Gender-Based Violence</h2>
@@ -38,3 +39,15 @@
         </section>
     </main>
 </template>
+
+<style>
+    main {
+        padding-left: 20px;
+    }
+    #types {
+        margin-bottom: 20px;
+    }
+    #types, #introduction h2 {
+        text-align: center;
+    }
+</style>

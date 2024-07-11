@@ -91,6 +91,9 @@ export default {
   signupUser(signupData) {
     return apiClient.post('/users/', signupData);
   },
+  contactForm(formData, config) {
+    return apiClient.post('/contact-mail/', formData, config);
+  },
   updatePassword(userEmail, passwordData) {
     return apiClient.post(`/password-update`, { email: userEmail, ...passwordData });
   }
