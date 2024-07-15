@@ -40,7 +40,7 @@ app = FastAPI()
 """
 origins = [
     "http://localhost:3000",
-    "http://empowerher.net"
+    "https://empowerherr.tech"
 ]
 
 app.add_middleware(
@@ -71,7 +71,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 # User Routes
-@app.post("/users/", response_model=schemas.User)
+@app.post("/api/users/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_email(db, user.user_email)
     if db_user:
@@ -84,13 +84,13 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return crud.create_user(db=db, user=user)
 
 
-@app.get("/users/", response_model=List[schemas.User])
+@app.get("/api/users/", response_model=List[schemas.User])
 def read_users(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     users = crud.get_users(db, skip=skip, limit=limit)
     return users
 
 
-@app.get("/users/{user_id}", response_model=schemas.User)
+@app.get("/api/users/{user_id}", response_model=schemas.User)
 def read_user(user_id: int, db: Session = Depends(get_db)):
     db_user = crud.get_user(db, user_id=user_id)
     if db_user is None:
@@ -101,7 +101,7 @@ def read_user(user_id: int, db: Session = Depends(get_db)):
     return db_user
 
 
-@app.get("/users/email/{user_email}", response_model=schemas.User)
+@app.get("/api/users/email/{user_email}", response_model=schemas.User)
 def read_user_by_email(user_email: str, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_email(db, user_email=user_email)
     if db_user is None:
@@ -113,8 +113,7 @@ def read_user_by_email(user_email: str, db: Session = Depends(get_db)):
 
 
 # Post Routes
-
-@app.post("/posts/", response_model=schemas.Post)
+@app.post("/api/posts/", response_model=schemas.Post)
 def create_post(
     post_title: str = Form(...),
     post_desc: str = Form(...),
@@ -144,13 +143,13 @@ def create_post(
     return new_post
 
 
-@app.get("/posts/", response_model=List[schemas.Post])
+@app.get("/api/posts/", response_model=List[schemas.Post])
 def read_posts(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
     posts = crud.get_posts(db, skip=skip, limit=limit)
     return posts
 
 
-@app.get("/posts/{post_id}", response_model=schemas.Post)
+@app.get("/api/posts/{post_id}", response_model=schemas.Post)
 def read_post(post_id: int, db: Session = Depends(get_db)):
     db_post = crud.get_post(db, post_id=post_id)
     if db_post is None:
@@ -161,7 +160,7 @@ def read_post(post_id: int, db: Session = Depends(get_db)):
     return db_post
 
 
-@app.delete("/posts/{post_id}", response_model=schemas.Post)
+@app.delete("/api/posts/{post_id}", response_model=schemas.Post)
 def delete_post(post_id: int, db: Session = Depends(get_db)):
     db_post = crud.get_post(db, post_id=post_id)
     if db_post is None:
@@ -173,7 +172,7 @@ def delete_post(post_id: int, db: Session = Depends(get_db)):
 
 
 # Comment Routes
-@app.post("/comments/", response_model=schemas.Comment)
+@app.post("/api/comments/", response_model=schemas.Comment)
 def create_comment(
     comment: schemas.CommentCreate,
     user_email: str,
@@ -185,7 +184,7 @@ def create_comment(
     return new_comment
 
 
-@app.get("/comments/", response_model=List[schemas.Comment])
+@app.get("/api/comments/", response_model=List[schemas.Comment])
 def read_comments(
         post_id: int,
         skip: int = 0,
@@ -201,7 +200,7 @@ def read_comments(
     return comments
 
 
-@app.get("/comments/{comment_id}", response_model=schemas.Comment)
+@app.get("/api/comments/{comment_id}", response_model=schemas.Comment)
 def read_comment(comment_id: int, db: Session = Depends(get_db)):
     db_comment = crud.get_comment(db, comment_id=comment_id)
     if db_comment is None:
@@ -212,7 +211,7 @@ def read_comment(comment_id: int, db: Session = Depends(get_db)):
     return db_comment
 
 
-@app.delete("/comments/{comment_id}", response_model=schemas.Comment)
+@app.delete("/api/comments/{comment_id}", response_model=schemas.Comment)
 def delete_comment(comment_id: int, db: Session = Depends(get_db)):
     db_comment = crud.get_comment(db, comment_id=comment_id)
     if db_comment is None:
@@ -223,7 +222,7 @@ def delete_comment(comment_id: int, db: Session = Depends(get_db)):
     return crud.delete_comment(db=db, comment_id=comment_id)
 
 
-@app.post("/token", response_model=schemas.Token)
+@app.post("/api/token", response_model=schemas.Token)
 def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user = crud.authenticate_user(db, form_data.username, form_data.password)
     if not user:
@@ -235,13 +234,13 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
     access_token = create_access_token(data={"sub": user.user_email})
     return {"access_token": access_token, "token_type": "bearer"}
 
-
-@app.get("/users/me/", response_model=schemas.User)
+  
+@app.get("/api/users/me/", response_model=schemas.User)
 async def read_users_me(current_user: schemas.User = Depends(get_current_user)):
     return current_user
 
-
-@app.post("/password-reset-request")
+  
+@app.post("/api/password-reset-request")
 def password_reset_request(request: schemas.PasswordResetRequest, db: Session = Depends(get_db)):
     user = crud.get_user_by_email(db, request.email)
     if not user:
@@ -252,7 +251,7 @@ def password_reset_request(request: schemas.PasswordResetRequest, db: Session = 
     return {"reset_token": reset_token}
 
 
-@app.post("/password-update")
+@app.post("/api/password-update")
 def password_reset(password_update: schemas.PasswordUpdate, db: Session = Depends(get_db)):
     user = crud.get_user_by_email(db, password_update.email)
     if not user:
@@ -267,7 +266,7 @@ def password_reset(password_update: schemas.PasswordUpdate, db: Session = Depend
     return {"message": "Password reset successful"}
 
 
-@app.post("/contact-mail/")
+@app.post("/api/contact-mail/")
 async def send_contact_email(
     background_tasks: BackgroundTasks,
     email: EmailStr = Form(...),
