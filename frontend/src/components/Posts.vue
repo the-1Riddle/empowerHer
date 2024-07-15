@@ -63,7 +63,8 @@ export default {
       }
     },
     getImageUrl(imagePath) {
-      return `http://localhost:8000/static/Pictures/${imagePath}`;
+      const baseUrl = 'http://localhost:8000';
+      return `${baseUrl}/static/Pictures/${imagePath}`;
     },
     formatDate(date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' };

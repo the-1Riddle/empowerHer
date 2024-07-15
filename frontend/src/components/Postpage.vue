@@ -165,7 +165,8 @@ export default {
       return this.users.find(user => user.user_email === userEmail) || {};
     },
     getImageUrl(imagePath) {
-      return `http://localhost:8000/static/Pictures/${imagePath}`;
+      const baseUrl = 'http://localhost:8000';
+      return `${baseUrl}/static/Pictures/${imagePath}`;
     },
     handleSubmit() {
       console.log('Form submitted with:', this.newComment);
