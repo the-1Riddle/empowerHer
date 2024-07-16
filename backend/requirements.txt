@@ -5,7 +5,7 @@ bcrypt==4.1.3
 beautifulsoup4==4.12.3
 boto3==1.34.138
 botocore==1.34.138
-certifi==2024.6.2
+certifi>=2024.7.4
 cffi==1.16.0
 charset-normalizer==3.3.2
 dnspython==2.6.1
@@ -35,7 +35,7 @@ python-dotenv==1.0.1
 python-jose[cryptography]
 python-multipart==0.0.9
 PyYAML==6.0.1
-requests==2.31.0
+requests>=2.32.0
 rich==13.7.1
 rsa==4.9
 s3transfer==0.10.2
