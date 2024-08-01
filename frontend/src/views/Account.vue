@@ -4,7 +4,7 @@
 			<div class="col-md-3">
 				<div class="leftbar">
 					<div class="user-details">
-						<img src="../assets/img/user-image.svg" class="img-fluid rounded-circle" alt="Profile Image">
+						<img src="../../assets/img/user-image.svg" class="img-fluid rounded-circle" alt="Profile Image">
 						<h4>{{ firstName }} {{ lastName }}</h4>
 						<p>{{ userEmail }}</p>
 					</div>
@@ -125,30 +125,3 @@ export default {
 	},
 }
 </script>
-
-<style>
-.leftbar {
-	padding: 20px;
-	background-color: #f5f5f5;
-}
-
-.user-details {
-	text-align: center;
-}
-
-.user-details img {
-	width: 150px;
-	height: 150px;
-	object-fit: cover;
-	margin-bottom: 10px;
-}
-
-.main-section {
-	padding: 20px;
-}
-
-.change-password,
-.customize-image {
-	margin-top: 20px;
-}
-</style>
