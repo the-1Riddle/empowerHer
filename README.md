@@ -1,5 +1,13 @@
 <br>
 
+THIS REPO IS AN ARCHIVE OF THE EMPOWER HER PROJECT AND IS CURRENTLY DISCONTINUED
+IF YOU ARE LOOKING FORWARD TO CONTRIBUTING PLEASE CONSIDER CHECKING THE NEW EMPOWER HER PROJECT
+HERE --=> [https://github.com/the-1Riddle/EmpowerHerr](https://github.com/the-1Riddle/EmpowerHerr)
+
+be sure to check the branches for more info :D
+
+<br>
+
 <div align="center">
   <a href="https://github.com/the-1Riddle/empowerHer">
     <img src="https://github.com/the-1Riddle/empowerHer/assets/125451537/4e3ca369-3649-4bdf-8af2-bab7847a11ad" height="100px" />
